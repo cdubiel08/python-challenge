@@ -7,16 +7,10 @@ csvpath = os.path.join('Resources', 'Homework_03-Python_Instructions_PyBank_Reso
 
 with open(csvpath, 'r') as csvfile:
 
-    # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    print(csvreader)
-    
-    # Read the header row first (skip this step if there is no header)
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
-
-    # Read each row of data after the header
+    
     budgetList = []
     profitLossSubset = []
     maxMonth = ""
@@ -45,7 +39,7 @@ with open(csvpath, 'r') as csvfile:
     print(f"Greatest Increase in Profits: {maxMonth} (${maxProfit})")
     print(f"Greatest Decrease in Profits: {minMonth} (${minProfit})")
 
-    output_path = os.path.join("new.txt")
+    output_path = os.path.join("analysis","output.txt")
     with open(output_path, 'w') as textfile:
         textfile.write("Financial Analysis\n")
         textfile.write("--------------------------------\n")
