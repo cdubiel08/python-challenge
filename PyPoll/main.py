@@ -17,7 +17,7 @@ with open(csvpath, 'r') as csvfile:
     
     uniqueNames = list(set(candidatesNamedSubset))
 
-    #total votes = to length of list as each line is a
+    #total votes = to length of list as each line is a vote
     totalVotes = len(candidatesNamedSubset)
 
     # initialize votes list with 0s = to number of candidates
@@ -43,7 +43,7 @@ with open(csvpath, 'r') as csvfile:
 
     for i in range(len(uniqueNames)):
         percentVote = votes[i]/totalVotes * 100
-        print(f"{uniqueNames[i]}: {percentVote}% ({votes[i]})")
+        print(f"{uniqueNames[i]}: {percentVote:.3f}% ({votes[i]})")
 
     #find winner
     winnerIndex = votes.index(max(votes)) #returns index value for largest integer in list
@@ -62,7 +62,7 @@ with open(csvpath, 'r') as csvfile:
         
         for i in range(len(uniqueNames)):
             percentVote = votes[i]/totalVotes * 100
-            textfile.write(f"{uniqueNames[i]}: {percentVote}% ({votes[i]})\n")
+            textfile.write(f"{uniqueNames[i]}: {percentVote:.3f}% ({votes[i]})\n")
         
         textfile.write(f"-------------------------------------\n")
         textfile.write(f"Winner: {winner}\n")
