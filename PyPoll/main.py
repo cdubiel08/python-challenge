@@ -42,7 +42,7 @@ with open(csvpath, 'r') as csvfile:
     print(f"Total Votes: {totalVotes}")
 
     for i in range(len(uniqueNames)):
-        percentVote = votes[i]/totalVotes
+        percentVote = votes[i]/totalVotes * 100
         print(f"{uniqueNames[i]}: {percentVote}% ({votes[i]})")
 
     #find winner
@@ -54,39 +54,16 @@ with open(csvpath, 'r') as csvfile:
     print("-------------------------------------")    
 
 
-    # # profitLossSubset = []
-    # # maxMonth = ""
-    # # minMonth = ""
-    # # for row in csvreader:
-    # #     budgetList.append(row)
-    # #     profitLossSubset.append(int(row[1]))
-
-    # # noMonths = len(budgetList)
-    # # totalNet = sum(profitLossSubset)
-    # # averageMonthlyProfit = sum(profitLossSubset)/len(budgetList)
-    # # maxProfit = max(profitLossSubset)
-    # # minProfit = min(profitLossSubset)
-
-    # # for row in budgetList:
-    # #     if int(row[1]) == max(profitLossSubset):
-    # #         maxMonth = row[0]
-    # #     if int(row[1]) == min(profitLossSubset):
-    # #         minMonth = row[0]
-
-    # # print("Financial Analysis")
-    # # print("--------------------------------")
-    # # print(f"Total Months: {noMonths}")
-    # # print(f"Total: {totalNet}")
-    # # print(f"Average Change: ${averageMonthlyProfit}")
-    # # print(f"Greatest Increase in Profits: {maxMonth} (${maxProfit})")
-    # # print(f"Greatest Decrease in Profits: {minMonth} (${minProfit})")
-
-    # # output_path = os.path.join("analysis","output.txt")
-    # # with open(output_path, 'w') as textfile:
-    # #     textfile.write("Financial Analysis\n")
-    # #     textfile.write("--------------------------------\n")
-    # #     textfile.write(f"Total Months: {noMonths}\n")
-    # #     textfile.write(f"Total: {totalNet}\n")
-    # #     textfile.write(f"Average Change: ${averageMonthlyProfit}\n")
-    # #     textfile.write(f"Greatest Increase in Profits: {maxMonth} (${maxProfit})\n")
-    # #     textfile.write(f"Greatest Decrease in Profits: {minMonth} (${minProfit})\n")
+    output_path = os.path.join("analysis","output.txt")
+    with open(output_path, 'w') as textfile:
+        textfile.write("Election Results\n")
+        textfile.write("--------------------------------\n")
+        textfile.write(f"Total Votes: {totalVotes}\n")
+        
+        for i in range(len(uniqueNames)):
+            percentVote = votes[i]/totalVotes * 100
+            textfile.write(f"{uniqueNames[i]}: {percentVote}% ({votes[i]})\n")
+        
+        textfile.write(f"-------------------------------------\n")
+        textfile.write(f"Winner: {winner}\n")
+        textfile.write(f"-------------------------------------\n")
